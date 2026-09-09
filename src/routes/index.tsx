@@ -45,18 +45,18 @@ function Index() {
         </nav>
       </header>
 
-      <section id="top" className="relative flex min-h-[92svh] items-end overflow-hidden">
+      <section id="top" className="relative flex min-h-[92svh] items-center justify-center overflow-hidden">
         <img src={hero} alt="Auswahl handgerollter May's Cigars auf Tabakblättern" className="hero-image absolute inset-0 h-full w-full object-cover" />
         <div className="hero-shadow absolute inset-0" />
-        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 pb-14 pt-32 md:px-12 md:pb-20">
-          <p className="reveal-up text-[10px] uppercase tracking-[0.28em] text-brass md:text-xs">Kubanische Wurzeln · Europäische Finesse</p>
-          <h1 className="reveal-up reveal-delay mt-5 max-w-5xl font-display text-[clamp(4.2rem,12vw,10rem)] leading-[0.78] text-foreground">May’s<br />Cigars</h1>
-          <div className="mt-7 flex max-w-2xl flex-col items-start gap-7 md:flex-row md:items-end md:justify-between">
-            <p className="reveal-up reveal-delay-2 max-w-[38rem] text-sm leading-relaxed text-foreground/72 md:text-lg">
-              Der Rauch ist vergänglich und gehört dem Moment. Es bleibt der Genuss.
-            </p>
-            <a href="#handschrift" className="luxury-link shrink-0">Die Maison entdecken <span aria-hidden="true">↓</span></a>
-          </div>
+        <div className="light-sweep absolute inset-y-0 -left-1/2 w-1/2" />
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-5 pb-14 pt-32 text-center md:px-12 md:pb-20">
+          <p className="reveal-up text-[10px] uppercase tracking-[0.32em] text-brass md:text-xs">Kubanische Wurzeln · Europäische Finesse</p>
+          <h1 className="title-mask mt-6 font-display text-[clamp(4.2rem,12vw,10rem)] leading-[0.82] text-foreground"><em>May’s</em> Cigars</h1>
+          <div className="hero-rule mx-auto mt-8 h-px w-24 bg-brass" />
+          <p className="reveal-up reveal-delay-2 mx-auto mt-7 max-w-[38rem] text-sm leading-relaxed text-foreground/72 md:text-xl">
+            Der Rauch ist vergänglich und gehört dem Moment. Es bleibt der Genuss.
+          </p>
+          <a href="#handschrift" className="luxury-link reveal-up reveal-delay-2 mt-7">Die Maison entdecken <span aria-hidden="true">↓</span></a>
         </div>
         <span className="absolute bottom-0 right-5 z-10 hidden origin-bottom-right -rotate-90 text-[9px] uppercase tracking-[0.3em] text-foreground/35 md:block">Nicaragua · Tradition · Genuss</span>
       </section>
@@ -100,21 +100,39 @@ function Index() {
         </div>
       </section>
 
-      <section id="formate" className="bg-background px-5 py-24 md:px-12 md:py-36">
+      <section id="formate" className="bg-background px-5 py-24 md:px-12 md:py-28">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex items-end justify-between border-b border-foreground/15 pb-8">
             <div><p className="eyebrow">Die Kollektion</p><h2 className="mt-5 font-display text-[clamp(3rem,7vw,6rem)] leading-none">Fünf Formate</h2></div>
             <span className="hidden text-xs uppercase tracking-[0.22em] text-brass md:block">Für jeden Moment</span>
           </div>
-          <div className="divide-y divide-foreground/10">
-            {formats.map(([number, name, label, copy]) => (
-              <article key={name} className="format-row group grid items-center gap-3 py-7 sm:grid-cols-[4rem_1fr_1fr] md:grid-cols-[6rem_1.2fr_1fr_1.2fr] md:py-9">
-                <span className="font-display text-3xl text-brass/45">{number}</span>
-                <h3 className="font-display text-4xl md:text-5xl">{name}</h3>
-                <p className="text-xs uppercase tracking-[0.18em] text-foreground/45">{label}</p>
-                <p className="text-sm leading-6 text-foreground/55 sm:col-start-2 md:col-start-auto">{copy}</p>
-              </article>
-            ))}
+          <div className="mt-10 grid gap-4 md:grid-cols-12 md:grid-rows-2">
+            <figure className="product-visual md:col-span-5 md:row-span-2">
+              <img src={collection} alt="Die fünf Formate der May's Cigars Kollektion" className="h-full w-full object-cover" loading="lazy" />
+              <figcaption><span>Longfiller</span><strong>Eine Mischung ausgewählter Premiumtabake</strong></figcaption>
+            </figure>
+            <figure className="product-visual min-h-64 md:col-span-4">
+              <img src={corona} alt="Corona Format von May's Cigars" className="h-full w-full object-cover" loading="lazy" />
+              <figcaption><span>Charakter</span><strong>Mittelkräftig · angenehm aromatisch</strong></figcaption>
+            </figure>
+            <figure className="product-visual min-h-64 md:col-span-3">
+              <img src={panatela} alt="Panatela Format von May's Cigars" className="h-full w-full object-cover" loading="lazy" />
+              <figcaption><span>Herstellung</span><strong>Handgerollt · ohne Zusätze</strong></figcaption>
+            </figure>
+            <div className="md:col-span-7 grid grid-cols-2 gap-px border border-foreground/10 bg-foreground/10 sm:grid-cols-5">
+              {formats.map(([number, name, label, copy]) => (
+                <article key={name} className="format-tile group relative bg-background p-4 sm:p-5">
+                  <span className="font-display text-xl text-brass/45">{number}</span>
+                  <h3 className="mt-6 font-display text-2xl leading-none">{name}</h3>
+                  <p className="mt-2 text-[9px] uppercase tracking-[0.14em] text-brass">{label}</p>
+                  <p className="mt-3 text-xs leading-5 text-foreground/48">{copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-t border-foreground/10 pt-7">
+            <p className="max-w-2xl text-sm leading-6 text-foreground/55">Ganze Tabakblätter aus verschiedenen Regionen Nicaraguas — von der Hochebene bis zur Vulkaninsel.</p>
+            <a className="luxury-link" href="https://www.mayscigars.com/shop/" target="_blank" rel="noreferrer">Kollektion ansehen <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>
